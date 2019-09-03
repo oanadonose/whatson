@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./components/Movie.css";
 import Movies from "./components/Movies";
 
 //tmdbapikey: 2ca7f95a77ff82974f6799d4ad26b7c8
@@ -64,7 +65,7 @@ class App extends Component {
   render() {
     //console.log(this.state);
     return (
-      <div>
+      <div className="App">
         <Movies movies={this.state.movies}></Movies>
       </div>
     );
