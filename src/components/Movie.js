@@ -13,6 +13,7 @@ class Movie extends Component {
     this.state = {
       movie: {},
       movieTMDB: {},
+      trailer: "",
       retrieveData: false
     };
   }
@@ -27,10 +28,7 @@ class Movie extends Component {
           <ReactPlayer
             width="500px"
             height="340px"
-            url={
-              "https://www.youtube.com/watch?v=" +
-              this.state.movieTMDB.videos.results[0].key
-            }
+            url={"https://www.youtube.com/watch?v=" + this.state.trailer}
           ></ReactPlayer>
         ) : (
           <img
@@ -71,8 +69,15 @@ class Movie extends Component {
           .then(data => data.json())
           .then(data => {
             //console.log(data);
+            let videoUrl = "";
+            data.videos.results.forEach(video => {
+              if (video.type === "Trailer") {
+                videoUrl = video.key;
+              }
+            });
             this.setState({
               movieTMDB: data,
+              trailer: videoUrl,
               retrieveData: true //data.videos.results[0].id
             });
           });
