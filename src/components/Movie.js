@@ -13,13 +13,14 @@ class Movie extends Component {
     this.state = {
       movie: {},
       movieTMDB: {},
+      trailer: "",
       retrieveData: false
     };
   }
   render() {
-    if (this.state.retrieveData) {
-      console.log(this.state.movieTMDB);
-    }
+    // if (this.state.retrieveData) {
+    //   console.log(this.state.movieTMDB);
+    // }
     return (
       <div className="movie-container">
         {this.state.retrieveData &&
@@ -27,10 +28,7 @@ class Movie extends Component {
           <ReactPlayer
             width="500px"
             height="340px"
-            url={
-              "https://www.youtube.com/watch?v=" +
-              this.state.movieTMDB.videos.results[0].key
-            }
+            url={"https://www.youtube.com/watch?v=" + this.state.trailer}
           ></ReactPlayer>
         ) : (
           <img
@@ -56,7 +54,7 @@ class Movie extends Component {
     )
       .then(data => data.json())
       .then(data => {
-        //console.log(data.results[0].title);
+        //console.log(data.results[0]);
         this.setState({
           movie: data.results[0]
         });
@@ -70,10 +68,17 @@ class Movie extends Component {
         )
           .then(data => data.json())
           .then(data => {
-            //console.log(data);
+            console.log(data);
             this.setState({
               movieTMDB: data,
               retrieveData: true //data.videos.results[0].id
+            });
+            this.state.movieTMDB.videos.results.forEach(video => {
+              if (video.type === "Trailer") {
+                this.setState({
+                  trailer: video.key
+                });
+              }
             });
           });
       });
