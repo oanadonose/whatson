@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import "./components/Movie.css";
 import Movies from "./components/Movies";
+import "./fonts.css";
 
 //tmdbapikey: 2ca7f95a77ff82974f6799d4ad26b7c8
 //tmdb: https://api.themoviedb.org/3/movie/550?api_key=2ca7f95a77ff82974f6799d4ad26b7c8

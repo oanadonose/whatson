@@ -1,12 +1,38 @@
 .movie-container {
-    background-color: rgba(31, 24, 75, 0.6);
-    height: 340px;
-    width: 500px;
+    background-color: rgba(31, 24, 75, 0.2);
+    height: 400px;
+    width: 680px;
     margin: 2em;
-    border-radius: 0.2em;
+    border-radius: 0.4em;
     text-align: center;
+
+    display: flex;
 }
 
 .poster {
-    max-height: 340px;
+    max-height: 400px;
 }
+
+.info-icon {
+    color: white;
+    margin-top: 8px;
+    cursor: pointer;
+}
+.material-icons.md-30 { font-size: 30px; }
+
+.video-player {
+    margin-right: 5px;
+}
+.infographic {
+    /* background-color: rgba(31, 24, 75, 0.2); */
+    
+    height: 400px;
+    width: 640px;
+    position: relative;
+    top: -400px;
+}
+
+.off {
+    background-color: yellow;
+}
+

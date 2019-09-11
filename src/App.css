@@ -3,5 +3,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: darkslateblue;
+  /* background: linear-gradient(to bottom right, #3494e6, #ec6ead); */
+  /* background: linear-gradient(to bottom right, #67b26f, #4ca2cd); */
+  background: #F3904F;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom right, #3B4371, #F3904F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

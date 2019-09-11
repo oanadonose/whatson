@@ -14,9 +14,24 @@ class Movie extends Component {
       movie: {},
       movieTMDB: {},
       trailer: "",
+      infoClick: "off",
       retrieveData: false
     };
   }
+
+  showInfo = () => {
+    console.log("info icon was clicked;");
+    if (this.state.infoClick === "off") {
+      this.setState({
+        infoClick: "on"
+      });
+    } else {
+      this.setState({
+        infoClick: "off"
+      });
+    }
+  };
+
   render() {
     if (this.state.retrieveData) {
       console.log(this.state.movieTMDB);
@@ -25,11 +40,15 @@ class Movie extends Component {
       <div className="movie-container">
         {this.state.retrieveData &&
         this.state.movieTMDB.videos.results.length > 0 ? (
-          <ReactPlayer
-            width="500px"
-            height="340px"
-            url={"https://www.youtube.com/watch?v=" + this.state.trailer}
-          ></ReactPlayer>
+          <div className="video-container">
+            <ReactPlayer
+              className="video-player"
+              width="640px"
+              height="400px"
+              url={"https://www.youtube.com/watch?v=" + this.state.trailer}
+            ></ReactPlayer>
+            <div className={"infographic" + " " + this.state.infoClick}></div>
+          </div>
         ) : (
           <img
             className="poster"
@@ -40,6 +59,10 @@ class Movie extends Component {
             alt={"movie poster of " + this.state.movieTMDB.original_title}
           />
         )}
+
+        <i class="material-icons md-30 info-icon" onClick={this.showInfo}>
+          info_outline
+        </i>
       </div>
     );
   }
