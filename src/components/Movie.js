@@ -127,7 +127,12 @@ class Movie extends Component {
             });
             let ratingColor = "";
 
-            const votes = data.vote_average;
+            let votes = data.vote_average.toString();
+            if (votes.includes(".")) {
+              //do nothing
+            } else {
+              votes = votes + ".0";
+            }
             if (votes === 0) {
               ratingColor = "gray";
             } else if (votes > 0 && votes < 4.5) {
