@@ -21,7 +21,7 @@ class Movie extends Component {
   }
 
   toggleInfo = () => {
-    console.log("info icon was clicked;");
+    //console.log("info icon was clicked;");
     if (this.state.infoClick === "off") {
       this.setState({
         infoClick: "on"
@@ -35,8 +35,9 @@ class Movie extends Component {
 
   render() {
     if (this.state.retrieveData) {
-      console.log(this.state.movieTMDB);
+      //console.log(this.state.movieTMDB);
     }
+    console.log(this.state.movie);
     return (
       <div className="movie-container">
         {this.state.retrieveData &&
@@ -142,7 +143,7 @@ class Movie extends Component {
             } else {
               ratingColor = "green";
             }
-            console.log("rating: " + votes + " " + ratingColor);
+            //console.log("rating: " + votes + " " + ratingColor);
             this.setState({
               movieTMDB: data,
               trailer: videoUrl,

@@ -81,6 +81,7 @@ h2, p {
 
 .circle {
     animation: progress 1s ease-out forwards;
+    stroke-linecap: round;
 }
 @keyframes progress {
     0% {
