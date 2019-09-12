@@ -1,0 +1,118 @@
+.location-container {
+    width: 40%;
+    margin-left: 20em;
+    margin-top: 3em;
+    display: flex;
+}
+.material-icons.location-icon{
+  font-size: 21px;
+}
+.location-icon {
+    color: white;
+    opacity: 85%;
+    position: relative;
+    bottom: 0.1em;
+    right: 7em;
+    font-size: 10px;
+    cursor: default;
+}
+.location {
+  color: white;
+  position: relative;
+  right: 8.5em;
+  cursor: default;
+}
+
+.cbox,
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.container {
+  flex-direction: column;
+  height: 100vh;
+}
+
+.parent {
+  width: 200px;
+  height: 50px;
+  position: relative;
+  left: -12em;
+  .add,
+  .cbox,
+  .message {
+    position: absolute;
+  }
+  .add,
+  .message {
+    color: orange;
+  }
+  .add {
+    top: -3px;
+    right: 25px;
+    transition: 0.6s all 0.3s;
+    letter-spacing: 1px;
+  }
+}
+
+.message,
+.cbox {
+  outline: none;
+  font-family: 'Fira Code', sans-serif;
+}
+
+.cbox {
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  background: orange;
+  border-radius: 100%;
+  -webkit-appearance: none;
+  z-index: 3;
+  &:before,
+  &:after {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: #E8E8E8;
+    transition: 0.4s all;
+  }
+  &:after {
+    transform: rotate(90deg);
+  }
+  &:checked {
+    ~.message {
+      width: 300px;
+      height: 50px;
+      transition: 0.3s width, 0.3s height 0.2s;
+    }
+    &:before,
+    &:after {
+      transform: rotate(360deg);
+      transition: 0.4s all;
+    }
+    ~.add {
+      font-size: 11px;
+      transform: translateY(-16px);
+      transition: 0.3s all;
+    }
+  }
+}
+
+.message {
+  right: 0;
+  height: 0;
+  width: 0;
+  transition: 0.4s all;
+  background: none;
+  border: 2px solid orange;
+  transition: 0.4s width 0.2s, 0.1s height;
+  font-size: 30px;
+  padding-left: 10px;
+  text-transform: uppercase;
+}

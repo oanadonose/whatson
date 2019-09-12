@@ -37,7 +37,6 @@ class Movie extends Component {
     if (this.state.retrieveData) {
       //console.log(this.state.movieTMDB);
     }
-    console.log(this.state.movie);
     return (
       <div className="movie-container">
         {this.state.retrieveData &&
@@ -68,8 +67,8 @@ class Movie extends Component {
                   a 15.9155 15.9155 0 0 1 0 -31.831"
                   fill="none"
                   stroke={this.state.rating.color} //this.state.rating.color
-                  stroke-width="2.5"
-                  stroke-dasharray={this.state.rating.rating * 10 + ", 100"} //this.state.rating.rating
+                  strokeWidth="2.5"
+                  strokeDasharray={this.state.rating.rating * 10 + ", 100"} //this.state.rating.rating
                 />
                 <text x="9" y="21.5" className="percentage">
                   {this.state.rating.rating}
