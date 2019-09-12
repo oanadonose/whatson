@@ -15,11 +15,12 @@ class Movie extends Component {
       movieTMDB: {},
       trailer: "",
       infoClick: "off",
+      rating: {},
       retrieveData: false
     };
   }
 
-  showInfo = () => {
+  toggleInfo = () => {
     console.log("info icon was clicked;");
     if (this.state.infoClick === "off") {
       this.setState({
@@ -47,7 +48,33 @@ class Movie extends Component {
               height="400px"
               url={"https://www.youtube.com/watch?v=" + this.state.trailer}
             ></ReactPlayer>
-            <div className={"infographic" + " " + this.state.infoClick}></div>
+            <div className={"infographic" + " " + this.state.infoClick}>
+              <h2>{this.state.movieTMDB.original_title}</h2>
+              <p className="ig-title">{this.state.movieTMDB.overview}</p>
+              <div className="ig-release">
+                <i className="material-icons ig-release-icon">schedule</i>
+                <h4 className="ig-release-status">
+                  {this.state.movieTMDB.status +
+                    " => " +
+                    this.state.movieTMDB.release_date}
+                </h4>
+              </div>
+              <svg viewBox="0 0 50 50">
+                <path
+                  className="circle"
+                  d="M18 2.0845 
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"
+                  fill="none"
+                  stroke={this.state.rating.color} //this.state.rating.color
+                  stroke-width="2.5"
+                  stroke-dasharray={this.state.rating.rating * 10 + ", 100"} //this.state.rating.rating
+                />
+                <text x="9" y="21.5" className="percentage">
+                  {this.state.rating.rating}
+                </text>
+              </svg>
+            </div>
           </div>
         ) : (
           <img
@@ -60,7 +87,7 @@ class Movie extends Component {
           />
         )}
 
-        <i class="material-icons md-30 info-icon" onClick={this.showInfo}>
+        <i className="material-icons md-30 info-icon" onClick={this.toggleInfo}>
           info_outline
         </i>
       </div>
@@ -98,9 +125,26 @@ class Movie extends Component {
                 videoUrl = video.key;
               }
             });
+            let ratingColor = "";
+
+            const votes = data.vote_average;
+            if (votes === 0) {
+              ratingColor = "gray";
+            } else if (votes > 0 && votes < 4.5) {
+              ratingColor = "red";
+            } else if (votes >= 5 && votes <= 7) {
+              ratingColor = "yellow";
+            } else {
+              ratingColor = "green";
+            }
+            console.log("rating: " + votes + " " + ratingColor);
             this.setState({
               movieTMDB: data,
               trailer: videoUrl,
+              rating: {
+                color: ratingColor,
+                rating: votes
+              },
               retrieveData: true //data.videos.results[0].id
             });
           });
