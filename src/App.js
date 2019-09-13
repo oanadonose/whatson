@@ -64,6 +64,12 @@ class App extends Component {
 
   componentDidMount() {
     this.getNearbyMovies();
+    // this.timer = setInterval(() => this.getNearbyMovies(), 5000);
+  }
+
+  componentWillUnmount() {
+    // clearInterval(this.timer);
+    // this.timer = null;
   }
 
   componentDidUpdate() {}
